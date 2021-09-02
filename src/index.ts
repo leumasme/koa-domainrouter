@@ -35,5 +35,5 @@ export default class DomainRouter {
         return [null, null]
     }
 }
-
+module.exports = DomainRouter;
 export type DomainRouterState = { matchedDomainPattern: string }
