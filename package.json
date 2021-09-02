@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "description": "Use different middleware depending on the Domain a request was sent to. Supports Wildcards.",
     "main": "build/index.js",
+    "types": "build/index.d.ts",
     "bugs": {
         "url": "https://github.com/leumasme/koa-domainrouter/issues"
     },
