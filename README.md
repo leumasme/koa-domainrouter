@@ -9,12 +9,15 @@ This can be used for various things such as an API subdomain, having multiple we
 ```js
 const DomainRouter = require("koa-domainrouter")
 const drouter = new DomainRouter({
-    "baseDomain": "example.com" // will simply be added to the end of all domains passed into `use`
+    "baseDomain": "example.com" // Optional: will simply be added to the end of all domains passed into `use`
 });
 
 // most basic example: login.example.com
 drouter.use("login.", (ctx, next)=> {
     // your logic
+
+    // ctx.state.matchedDomainPattern is set to the pattern that matched this request
+    console.assert(ctx.state.matchedDomainPattern == "login.example.com")
 })
 
 // mutliple domains in one `use` are possible

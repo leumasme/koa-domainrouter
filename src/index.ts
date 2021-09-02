@@ -11,7 +11,7 @@ export default class DomainRouter {
         return (ctx, next) => {
             let [pattern, fun] = this.match(ctx.host)
             if (fun) {
-                ctx.state.pattern = pattern!;
+                ctx.state.matchedDomainPattern = pattern!;
                 fun(ctx, next)
             } else {
                 next()
@@ -36,4 +36,4 @@ export default class DomainRouter {
     }
 }
 
-export type DomainRouterState = { pattern: string }
+export type DomainRouterState = { matchedDomainPattern: string }
