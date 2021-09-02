@@ -2,7 +2,10 @@ import { Middleware } from "koa";
 import matcher from "matcher"
 
 export default class DomainRouter {
-    constructor() { };
+    private baseDomain = ""
+    constructor(opts?: { baseDomain?: string }) {
+        if (opts?.baseDomain) this.baseDomain = opts?.baseDomain;
+    };
     private routeList = new Map<string, Middleware>()
     routes(): Middleware<DomainRouterState> {
         return (ctx, next) => {
@@ -18,10 +21,10 @@ export default class DomainRouter {
     use(host: string | string[], fun: Middleware) {
         if (Array.isArray(host)) {
             for (const h of host) {
-                this.routeList.set(h.toLowerCase(), fun)
+                this.routeList.set(h.toLowerCase() + this.baseDomain, fun)
             }
         } else {
-            this.routeList.set(host.toLowerCase(), fun)
+            this.routeList.set(host.toLowerCase() + this.baseDomain, fun)
         }
     }
     match(host: string): [string, Middleware] | [null, null] {
@@ -33,4 +36,4 @@ export default class DomainRouter {
     }
 }
 
-export type DomainRouterState = { pattern: string}
+export type DomainRouterState = { pattern: string }

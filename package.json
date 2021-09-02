@@ -1,6 +1,6 @@
 {
     "name": "koa-domainrouter",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Use different middleware depending on the Domain a request was sent to. Supports Wildcards.",
     "main": "build/index.js",
     "types": "build/index.d.ts",
