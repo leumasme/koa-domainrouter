@@ -27,7 +27,7 @@ export default class DomainRouter {
     match(host: string): [string, Middleware] | [null, null] {
         for (const [pattern, fun] of this.routeList.entries()) {
             let found = matcher(host, pattern)
-            if (found) return [pattern, fun]
+            if (found.length != 0) return [pattern, fun]
         }
         return [null, null]
     }
