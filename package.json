@@ -7,6 +7,9 @@
     "bugs": {
         "url": "https://github.com/leumasme/koa-domainrouter/issues"
     },
+    "files": [
+        "build"
+    ],
     "keywords": [
         "koa",
         "middleware",
