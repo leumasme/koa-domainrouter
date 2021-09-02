@@ -18,7 +18,7 @@ export default class DomainRouter {
             }
         }
     }
-    use(host: string | string[], fun: Middleware) {
+    use(host: string | string[], fun: Middleware<DomainRouterState>) {
         if (Array.isArray(host)) {
             for (const h of host) {
                 this.routeList.set(h.toLowerCase() + this.baseDomain, fun)
