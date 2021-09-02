@@ -4,6 +4,7 @@
     "description": "Use different middleware depending on the Domain a request was sent to. Supports Wildcards.",
     "main": "build/index.js",
     "types": "build/index.d.ts",
+    "sideEffects": false,
     "bugs": {
         "url": "https://github.com/leumasme/koa-domainrouter/issues"
     },
