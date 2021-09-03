@@ -13,13 +13,13 @@ export default class DomainRouter {
      * @returns Router Middleware
      */
     routes(): Middleware<DomainRouterState> {
-        return (ctx, next) => {
+        return async (ctx, next) => {
             let [pattern, fun] = this.match(ctx.host)
             if (fun) {
                 ctx.state.matchedDomainPattern = pattern!;
-                fun(ctx, next)
+                await fun(ctx, next)
             } else {
-                next()
+                await next()
             }
         }
     }
