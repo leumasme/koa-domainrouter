@@ -26,14 +26,20 @@
         "url": "github:leumasme/koa-domainrouter"
     },
     "scripts": {
-        "build": "npx tsc"
+        "build": "npx tsc",
+        "test": "mocha -r ts-node/register tests/**/*.ts"
     },
     "author": "Temm",
     "license": "ISC",
     "devDependencies": {
+        "@types/chai": "^4.2.21",
+        "@types/mocha": "^9.0.0",
         "@types/node": "^14.14.34",
-        "typescript": "^4.2.3",
-        "koa": "^2.13.1"
+        "chai": "^4.3.4",
+        "koa": "^2.13.1",
+        "mocha": "^9.1.1",
+        "ts-node": "^10.2.1",
+        "typescript": "^4.2.3"
     },
     "dependencies": {
         "@types/koa": "^2.13.4",
