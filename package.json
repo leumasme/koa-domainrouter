@@ -26,6 +26,7 @@
         "url": "github:leumasme/koa-domainrouter"
     },
     "scripts": {
+        "prepublish": "npx tsc",
         "build": "npx tsc",
         "test": "mocha -r ts-node/register tests/**/*.ts"
     },
