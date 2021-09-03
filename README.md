@@ -1,4 +1,7 @@
 # koa-domainrouter
+[![CodeFactor](https://www.codefactor.io/repository/github/leumasme/koa-domainrouter/badge)](https://www.codefactor.io/repository/github/leumasme/koa-domainrouter)
+![Maintainability](https://img.shields.io/codeclimate/maintainability/leumasme/koa-domainrouter)
+[![Issues](https://img.shields.io/codeclimate/issues/leumasme/koa-domainrouter)](https://github.com/leumasme/koa-domainrouter/issues)
 
 A simple project that allows you to use different middleware, depending on what Domain the request was sent to.
 
