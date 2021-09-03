@@ -7,6 +7,11 @@ export default class DomainRouter {
         if (opts?.baseDomain) this.baseDomain = opts?.baseDomain;
     };
     private routeList = new Map<string, Middleware>()
+    /**
+     * Create a middleware that will serve all registered domains
+     * Requests that dont match any registed domain will fall through
+     * @returns Router Middleware
+     */
     routes(): Middleware<DomainRouterState> {
         return (ctx, next) => {
             let [pattern, fun] = this.match(ctx.host)
@@ -18,6 +23,10 @@ export default class DomainRouter {
             }
         }
     }
+    /**
+     * @param host domain(s) to match. uses wildcards
+     * @param fun middle to be executed
+     */
     use(host: string | string[], fun: Middleware<DomainRouterState>) {
         if (Array.isArray(host)) {
             for (const h of host) {
@@ -27,6 +36,11 @@ export default class DomainRouter {
             this.routeList.set(host.toLowerCase() + this.baseDomain, fun)
         }
     }
+    /**
+     * Manually look up the middleware of a domain
+     * @param host domain to look up
+     * @returns [matchedRule, middlware] or [null, null]
+     */
     match(host: string): [string, Middleware] | [null, null] {
         for (const [pattern, fun] of this.routeList.entries()) {
             let found = matcher(host, pattern)
