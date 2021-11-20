@@ -12,7 +12,8 @@ This can be used for various things such as an API subdomain, having multiple we
 ```js
 const DomainRouter = require("koa-domainrouter")
 const drouter = new DomainRouter({
-    "baseDomain": "example.com" // Optional: will simply be added to the end of all domains passed into `use`
+    "baseDomain": "example.com", // Optional: will simply be added to the end of all domains passed into `use`
+    "fallThrough": false // Optional: should domains that didn't match any registered domain routes be passed through to the next middleware? default true.
 });
 
 // most basic example: login.example.com

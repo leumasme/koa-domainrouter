@@ -1,10 +1,27 @@
 import { Middleware } from "koa";
 import matcher from "matcher"
 
+export interface DomainRouterOptions {
+    /**
+     * The base domain that will be appended to all route domains.
+     * @default ""
+     * @example "example.com"
+     */
+    baseDomain?: string;
+    /**
+     * Should requests that did not match any routes still be handed down to the next middleware?
+     * @default true
+     * @example false
+     */
+    fallThrough?: boolean;
+}
+
 export default class DomainRouter {
     private baseDomain = ""
-    constructor(opts?: { baseDomain?: string }) {
+    private fallThrough = true;
+    constructor(opts?: DomainRouterOptions) {
         if (opts?.baseDomain) this.baseDomain = opts?.baseDomain;
+        this.fallThrough = opts?.fallThrough ?? true;
     };
     private routeList = new Map<string, Middleware>()
     /**
@@ -19,7 +36,7 @@ export default class DomainRouter {
                 ctx.state.matchedDomainPattern = pattern!;
                 await fun(ctx, next)
             } else {
-                await next()
+                if (this.fallThrough) await next()
             }
         }
     }
